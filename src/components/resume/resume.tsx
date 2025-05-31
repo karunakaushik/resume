@@ -7,6 +7,7 @@ import InternshipDetails from "./InternshipDetails";
 import ProjectDetails from "./ProjectDetails";
 import GitHubIcon from "../../constant/GitHubIcon";
 import LinkedInIcon from "../../constant/LinkedInIcon";
+import ExternalLinkArrow from "../../constant/ExternalLinkArrow";
 import {
   ExperienceDetailsProps,
   InternshipDetailsProps,
@@ -141,8 +142,9 @@ function Resume() {
                   </div>
                   <div className="flex flex-col gap-3">
                     <div>
-                      <div className="text-sm font-medium text-[#111111]">
+                      <div className="text-sm hover:underline  font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                         {exp.title}
+                        <ExternalLinkArrow />
                       </div>
                       <div className="text-sm text-[#555555]">
                         {exp.company}, {exp.location}
@@ -178,8 +180,9 @@ function Resume() {
                   </div>
                   <div className="flex flex-col gap-3">
                     <div>
-                      <div className="text-sm font-medium text-[#111111]">
+                      <div className="text-sm hover:underline  font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                         {internship.title}
+                        <ExternalLinkArrow />
                       </div>
                       <div className="text-sm text-[#555555]">
                         {internship.company}
@@ -216,8 +219,9 @@ function Resume() {
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
-                    <div className="text-sm font-medium text-[#111111]">
+                    <div className="hover:underline text-sm font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                       {project.title}
+                      <ExternalLinkArrow />
                     </div>
                     <div className="text-sm text-[#555555]">
                       {project.organization}
