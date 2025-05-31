@@ -42,31 +42,32 @@ function Resume() {
   };
 
   return (
-    <div className="flex w-[100vw] items-center h-[100vh] justify-start py-[82px] px-[62px] flex-col gap-4 overflow-y-auto">
-      <div className="flex flex-col gap-4 w-[600px]">
-        <div className="flex gap-4 h-fit items-center pb-[50px]">
+    <div className="flex min-h-screen w-full flex-col gap-4 overflow-y-auto bg-white px-4 py-6 sm:px-6 md:px-8 lg:px-[62px] lg:py-[82px]">
+      <div className="mx-auto w-full max-w-[600px]">
+        {/* Profile Section */}
+        <div className="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
           <div
-            className="w-[92px] h-[92px] rounded-full"
+            className="h-20 w-20 shrink-0 rounded-full sm:h-[92px] sm:w-[92px]"
             style={{
               backgroundImage: `url(${profilepic.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
-          <div className="flex flex-col gap-2">
-            <h2 className="text-xl font-bold text-[#111111]">
+          <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
+            <h2 className="text-xl font-bold text-[#111111] sm:text-2xl">
               {personalInfo.name}
             </h2>
             <h2 className="text-sm font-medium text-[#555555]">
               {personalInfo.title}
             </h2>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-3">
               <a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="flex items-center gap-1 text-xs  w-fit rounded-full hover:bg-[#EAEAEA] transition-colors">
+                <div className="flex items-center gap-1 rounded-full p-1.5 text-xs transition-colors hover:bg-[#EAEAEA]">
                   <LinkedInIcon />
                 </div>
               </a>
@@ -75,12 +76,12 @@ function Resume() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="flex items-center gap-1 text-xs  w-fit rounded-full hover:bg-[#EAEAEA] transition-colors">
+                <div className="flex items-center gap-1 rounded-full p-1.5 text-xs transition-colors hover:bg-[#EAEAEA]">
                   <GitHubIcon />
                 </div>
               </a>
               <button onClick={handleResumeClick} className="cursor-pointer">
-                <div className="flex items-center px-2 py-1 gap-1 text-xs w-fit rounded-full hover:bg-[#EAEAEA] transition-colors">
+                <div className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs transition-colors hover:bg-[#EAEAEA]">
                   Resume
                 </div>
               </button>
@@ -88,15 +89,17 @@ function Resume() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-bold text-[#111111]">About</div>
+        {/* About Section */}
+        <div className="mb-8">
+          <h3 className="mb-3 text-sm font-bold text-[#111111]">About</h3>
           <p className="text-sm font-medium text-[#555555]">
             {personalInfo.about}
           </p>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-bold text-[#111111]">Skills</div>
+        {/* Skills Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">Skills</h3>
           <div className="flex flex-col gap-6">
             {skills.map((skillCategory, idx) => (
               <div key={idx} className="flex flex-col gap-2">
@@ -107,7 +110,7 @@ function Resume() {
                   {skillCategory.items.map((skill, skillIdx) => (
                     <span
                       key={skillIdx}
-                      className="text-sm px-3 py-1 bg-[#F5F5F5] rounded-full text-[#555555]"
+                      className="rounded-full bg-[#F5F5F5] px-3 py-1.5 text-xs text-[#555555] sm:text-sm"
                     >
                       {skill}
                     </span>
@@ -118,15 +121,16 @@ function Resume() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="text-sm font-bold text-[#111111]">Experience</div>
-          <div className="flex flex-col gap-3">
+        {/* Experience Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">Experience</h3>
+          <div className="flex flex-col gap-6">
             <div className="text-sm font-medium text-[#555555]">Full Time</div>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               {experience.map((exp, index) => (
                 <div
                   key={index}
-                  className="flex gap-8 cursor-pointer hover:bg-[#F5F5F5] p-2 rounded-lg transition-colors"
+                  className="group cursor-pointer rounded-lg p-3 transition-colors hover:bg-[#F5F5F5]"
                   onClick={() =>
                     setSelectedExp({
                       title: exp.title,
@@ -137,12 +141,12 @@ function Resume() {
                     })
                   }
                 >
-                  <div className="text-sm text-[#555555] w-[140px]">
-                    {exp.duration}
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <div className="text-sm hover:underline  font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+                    <div className="text-sm text-[#555555] sm:w-[140px]">
+                      {exp.duration}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="hover:underline text-sm font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                         {exp.title}
                         <ExternalLinkArrow />
                       </div>
@@ -157,15 +161,15 @@ function Resume() {
           </div>
 
           {/* Internships Section */}
-          <div className="flex flex-col gap-3">
-            <div className="text-sm font-medium text-[#555555]">
+          <div className="mt-6">
+            <div className="mb-4 text-sm font-medium text-[#555555]">
               Internships
             </div>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               {internships.map((internship, index) => (
                 <div
                   key={index}
-                  className="flex gap-8 cursor-pointer hover:bg-[#F5F5F5] p-2 rounded-lg transition-colors"
+                  className="group cursor-pointer rounded-lg p-3 transition-colors hover:bg-[#F5F5F5]"
                   onClick={() =>
                     setSelectedInternship({
                       title: internship.title,
@@ -175,12 +179,12 @@ function Resume() {
                     })
                   }
                 >
-                  <div className="text-sm text-[#555555] w-[140px]">
-                    {internship.duration}
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <div className="text-sm hover:underline  font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+                    <div className="text-sm text-[#555555] sm:w-[140px]">
+                      {internship.duration}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="hover:underline text-sm font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                         {internship.title}
                         <ExternalLinkArrow />
                       </div>
@@ -196,13 +200,16 @@ function Resume() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="text-sm font-bold text-[#111111]">Side Projects</div>
-          <div className="flex flex-col gap-8">
+        {/* Projects Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">
+            Side Projects
+          </h3>
+          <div className="flex flex-col gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="flex gap-8 cursor-pointer hover:bg-[#F5F5F5] p-2 rounded-lg transition-colors"
+                className="group cursor-pointer rounded-lg p-3 transition-colors hover:bg-[#F5F5F5]"
                 onClick={() =>
                   setSelectedProject({
                     title: project.title,
@@ -214,11 +221,11 @@ function Resume() {
                   })
                 }
               >
-                <div className="text-sm text-[#555555] w-[140px]">
-                  {project.duration}
-                </div>
-                <div className="flex flex-col gap-3">
-                  <div>
+                <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+                  <div className="text-sm text-[#555555] sm:w-[140px]">
+                    {project.duration}
+                  </div>
+                  <div className="flex flex-col gap-1">
                     <div className="hover:underline text-sm font-medium text-[#111111] group-hover:text-[#555555] inline-flex items-center">
                       {project.title}
                       <ExternalLinkArrow />
@@ -245,31 +252,35 @@ function Resume() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-bold text-[#111111]">Education</div>
-          <div className="flex flex-col gap-8">
+        {/* Education Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">Education</h3>
+          <div className="flex flex-col gap-6">
             {education.map((edu, index) => (
-              <div key={index} className="flex gap-8">
-                <div className="text-sm text-[#555555] w-[140px]">
+              <div
+                key={index}
+                className="flex flex-col gap-2 sm:flex-row sm:gap-8"
+              >
+                <div className="text-sm text-[#555555] sm:w-[140px]">
                   {edu.duration}
                 </div>
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <div className="text-sm font-medium text-[#111111]">
-                      {edu.degree}
-                    </div>
-                    <div className="text-sm text-[#555555]">
-                      {edu.institution}
-                    </div>
+                <div className="flex flex-col gap-1">
+                  <div className="text-sm font-medium text-[#111111]">
+                    {edu.degree}
+                  </div>
+                  <div className="text-sm text-[#555555]">
+                    {edu.institution}
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-bold text-[#111111]">Achievement</div>
-          <ul className="list-disc text-sm text-[#555555] ml-4 space-y-2">
+
+        {/* Achievements Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">Achievement</h3>
+          <ul className="ml-4 space-y-2 list-disc text-sm text-[#555555]">
             {achievements.map((achievement, idx) => (
               <li key={idx} className="text-sm font-medium">
                 {achievement}
@@ -277,15 +288,17 @@ function Resume() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-bold text-[#111111]">
+
+        {/* Languages Section */}
+        <div className="mb-8">
+          <h3 className="mb-4 text-sm font-bold text-[#111111]">
             Languages Known
-          </div>
-          <div className="flex gap-2">
+          </h3>
+          <div className="flex flex-wrap gap-2">
             {languages.map((language, index) => (
               <div
                 key={index}
-                className="text-sm px-3 py-1 bg-[#F5F5F5] rounded-full"
+                className="rounded-full bg-[#F5F5F5] px-3 py-1.5 text-xs sm:text-sm"
               >
                 {language}
               </div>
@@ -293,6 +306,8 @@ function Resume() {
           </div>
         </div>
       </div>
+
+      {/* Modals */}
       <Modal
         isOpen={!!selectedExp}
         onClose={() => setSelectedExp(null)}
